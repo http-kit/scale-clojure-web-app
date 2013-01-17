@@ -38,6 +38,7 @@
              ["--worker" "Http worker thread count" :default 4 :parse-fn to-int])]
     (when (:help options) (println banner) (System/exit 0))
     (reset! server (run-server (app) {:port (:port options)
+                                      :max-line 2048 ; header line max length 2k
                                       :worker-name-prefix "w"
                                       :thread (:worker options)}))
     (println (str "Server started. listen at 0.0.0.0@" (:port options)))))
