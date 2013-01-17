@@ -51,7 +51,7 @@ cat /proc/net/sockstat
 
 #### Test output
 
-[logfile](https://github.com/shenfeng/scale-clojure-web-application/blob/master/results/logfile)
+[logfile](https://github.com/shenfeng/scale-clojure-web-app/blob/master/results/logfile)
 
 ```sh
 time 0s, concurrency: 100, total requests: 0, thoughput: 0.00M/s, 0.00 requests/seconds
@@ -106,8 +106,8 @@ time 1490s, concurrency: 400000, total requests: 10461841, thoughput: 35.39M/s, 
 
 ### CPU Usage
 
-![cpu usage](https://raw.github.com/shenfeng/scale-clojure-web-application/master/results/cpu.png)
+![cpu usage](https://raw.github.com/shenfeng/scale-clojure-web-app/master/results/cpu.png)
 
 ### Memory Usage
 
-![heap memory usage](https://raw.github.com/shenfeng/scale-clojure-web-application/master/results/heap.png)
+![heap memory usage](https://raw.github.com/shenfeng/scale-clojure-web-app/master/results/heap.png)
