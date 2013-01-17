@@ -1,5 +1,5 @@
 #!/bin/sh
 
 java -server -Xms3072m -Xmx3072m  \
-    -server -cp `lein classpath` clojure.main \
+    -cp `lein classpath` clojure.main \
     -m main $@
