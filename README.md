@@ -2,7 +2,7 @@
 
 Test how Clojure web application scales concurrent HTTP connections with [http-kit](https://github.com/shenfeng/http-kit)
 
-400K concurrent connections with 3G RAM, clients send a request every 10s ~ 90s, server responses with 1k ~ 10k chars
+400K concurrent connections with 3G heap, clients are keep-alive, send a request every 10s ~ 90s, server responses with 1k ~ 10k chars
 
 Detail results in `results` folder
 
