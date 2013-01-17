@@ -1,0 +1,5 @@
+#!/bin/sh
+
+java -server -Xms96m -Xmx96m  \
+    -server -cp `lein classpath` clojure.main \
+    -m main $@
