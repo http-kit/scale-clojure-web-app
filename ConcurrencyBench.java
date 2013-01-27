@@ -41,10 +41,6 @@ class Attachment {
 /**
 # more ports for testing
 sudo sysctl -w net.ipv4.ip_local_port_range="1025 65535"
-# tcp read buffer, min, default, maximum
-sudo sysctl -w net.ipv4.tcp_rmem="4096 4096 16777216"
-# tcp write buffer, min, default, maximum
-sudo sysctl -w net.ipv4.tcp_wmem="4096 4096 16777216"
 echo 9999999 | sudo tee /proc/sys/fs/nr_open
 echo 9999999 | sudo tee /proc/sys/fs/file-max
 
@@ -55,11 +51,12 @@ echo 9999999 | sudo tee /proc/sys/fs/file-max
 public class ConcurrencyBench {
 
     final static int PER_IP = 20000;
-    final static InetSocketAddress ADDRS[] = new InetSocketAddress[20];
+    final static InetSocketAddress ADDRS[] = new InetSocketAddress[30];
+    // 600k concurrent connections
     final static int CONCURENCY = PER_IP * ADDRS.length;
 
     static {
-        // for i in `seq 200 220`; do sudo ifconfig eth0:$i 192.168.1.$i up ; done
+        // for i in `seq 200 240`; do sudo ifconfig eth0:$i 192.168.1.$i up ; done
         final int PORT = 8000;
         final int IP_START = 200;
         for (int i = 0; i < ADDRS.length; i++) {
@@ -70,15 +67,15 @@ public class ConcurrencyBench {
     final static Random r = new Random();
 
     public static ByteBuffer randRequest() {
-        int length = r.nextInt(10240); // 1 ~~ 10k
+        int length = r.nextInt(4096); // 0 ~~ 4k
         String uri = "/?length=" + length;
         return ByteBuffer.wrap(("GET " + uri + " HTTP/1.1\r\nHost: localhost\r\n\r\n")
                 .getBytes());
     }
 
     public static int randidelTime() {
-        int seconds = 10 + r.nextInt(90);
-        return seconds * 1000;
+        int ms = 5000 + r.nextInt(45000); // 5s ~ 50s
+        return ms;
     }
 
     final static PriorityQueue<Connnection> connections = new PriorityQueue<Connnection>(

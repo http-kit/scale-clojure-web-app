@@ -10,4 +10,4 @@
                  [org.clojure/tools.cli "0.2.1"]
                  [ring/ring-core "1.1.3"]
                  [org.clojure/tools.cli "0.2.1"]
-                 [me.shenfeng/http-kit "2.0-SNAPSHOT"]])
+                 [http-kit "2.0-rc1"]])
