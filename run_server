@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# try tweak the following kernel parameters if reach 64k limit
+# net.netfilter.nf_conntrack_max
+# net.ipv4.netfilter.ip_conntrack_max
+# net.nf_conntrack_max
+# more info https://github.com/http-kit/scale-clojure-web-app/issues/2#issuecomment-14654866
+
 java -server -Xms3072m -Xmx3072m  \
     -cp `lein classpath` clojure.main \
     -m main $@
