@@ -21,5 +21,5 @@
 
 (defn -main [& args]
   (run-server (-> handler wrap-keyword-params wrap-params)
-              {:port 8000})
+              {:port 8000 :queue-size 204800})
   (println (str "Server started. listen at 0.0.0.0@8000")))

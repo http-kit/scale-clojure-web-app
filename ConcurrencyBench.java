@@ -74,7 +74,7 @@ public class ConcurrencyBench {
     }
 
     public static int randidelTime() {
-        int ms = 5000 + r.nextInt(45000); // 5s ~ 50s
+        int ms = 10000 + r.nextInt(90000); // 10s ~ 100s
         return ms;
     }
 
@@ -161,7 +161,7 @@ public class ConcurrencyBench {
             reportPerSeconds(now);
 
             if (opened < CONCURENCY) {
-                Thread.sleep(20); // open 5000 per seconds most
+                Thread.sleep(25); // open 4000 connections per second most
             }
         }
     }
